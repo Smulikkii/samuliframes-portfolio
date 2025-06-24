@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Noto Sans', sans-serif;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer components {
+  /* General Layout */
+  .page-section {
+    @apply min-h-screen py-12 flex flex-col justify-center items-center;
+  }
+  .section-container {
+    @apply container mx-auto px-4 lg:px-5;
+  }
+  .section-title {
+    @apply mb-4 text-4xl tracking-tight text-center text-white;
+  }
+
+  /* Buttons & Links */
+  .btn {
+    @apply px-5 py-2 inline-block transition-colors;
+  }
+  .btn-primary {
+    @apply bg-black/70 text-white hover:bg-neutral-700 mt-10;
+  }
+  .btn-form-submit {
+    @apply py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-neutral-700 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-full;
+  }
+  .social-link {
+      @apply text-white hover:text-blue-400 transition duration-300;
+  }
+
+  /* Navigation */
+  #nav {
+    @apply fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  .nav-list {
+      @apply flex flex-col md:flex-row md:justify-center space-y-4 md:space-y-0 md:space-x-6 mt-16 md:mt-0 md:py-2;
+  }
+  .nav-link {
+    @apply text-white hover:text-yellow-400 font-bold px-4 py-2 block transition-all duration-300 hover:pl-6 md:hover:pl-4 md:hover:border-b-2 md:hover:border-yellow-400;
+  }
+  #close-nav {
+      @apply text-white text-2xl px-3 py-2 absolute top-2 right-2 md:hidden;
+  }
+
+  /* Form */
+  .form-label {
+      @apply block mb-2 text-sm font-medium text-white;
+  }
+  .form-input {
+      @apply block p-3 w-full shadow-xs bg-neutral-700 border border-gray-700 text-sm text-gray-100 rounded-lg focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400;
+  }
+
+  /* Cards & Gallery */
+  .reference-card {
+    @apply block max-w-sm p-6 bg-neutral-700 border border-gray-700 rounded-lg shadow-sm hover:bg-neutral-700 w-full sm:w-auto;
+  }
+  .grid-container {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 w-full max-w-4xl mx-auto;
+  }
+  .grid-item {
+    @apply relative overflow-hidden;
+  }
+  .grid-item img {
+    @apply w-full h-auto block transition-transform duration-300 ease-in-out;
+    transform-origin: center top;
+  }
+  .overlay {
+    @apply absolute top-0 left-0 w-full h-full bg-black/70 opacity-0 flex flex-col justify-center items-center transition-opacity duration-300 ease-in-out;
+  }
+  .text {
+    @apply text-white text-lg text-center opacity-0 translate-y-5 transition-all duration-300 ease-in-out;
+  }
+
+  /* Hover effects */
+  .grid-item:hover img {
+    @apply scale-125;
+  }
+  .grid-item:hover .overlay {
+    @apply opacity-100;
+  }
+  .grid-item:hover .text {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* Keyframes can remain at the root level */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

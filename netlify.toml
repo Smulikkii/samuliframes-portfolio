@@ -1,0 +1,9 @@
+# Netlify configuration file
+
+[build]
+  # Your site's main files are in the 'src' folder.
+  publish = "src"
+
+[functions]
+  # Your serverless functions are in this directory.
+  directory = "netlify/functions"
